@@ -415,7 +415,7 @@ if __name__ == "__main__":
     
     #now we just add to the email similarly like we would if you were doing manually
     
-    mail.To = "makharia.shivangee@gmail.com"
+    mail.To = "Shiv Mack @gmail.com; Super Store Manager@gmail.com"
     
     mail.Subject = "Super Store Market Report"
     
