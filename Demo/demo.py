@@ -163,6 +163,7 @@ if __name__ == "__main__":
     # commenting code like this is nice as you develop code and are trying to do
     # stuff with and without certain steps
     
+    # return_status_df = return_status_df.sort_values(by='Order ID', ascending=True)
     
 
     #---- Step 4
@@ -180,6 +181,7 @@ if __name__ == "__main__":
     
     #now we want to "merge" this data with the return status
     
+    orders_dataset = pd.merge(orders_dataset_managers, return_status_df, left_on=['Order ID'], right_on=['Order ID'], how='left')
     
     
     # the rows that were not returned appears as NAN values from teh merge
@@ -341,7 +343,6 @@ if __name__ == "__main__":
     # when i searched, this was the first soln that was paired with a clear explaination
     # that explains all the steps and how it achieves the final values
 
-    #we are going to round the data again to make it easier to read    
     order_RR_product_pivot_count=order_RR_product_pivot_count.round(2)
 
 
