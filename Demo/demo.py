@@ -49,10 +49,15 @@ toolbox is full
 
 import pandas as pd
 import numpy as np
+
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 import os
 import win32com.client as win32
+
+
+
 if __name__ == "__main__":
 
     '''
@@ -146,19 +151,18 @@ if __name__ == "__main__":
     
     #---- Step 3
     
-    #third step is to make sure that the df is the excel formulas work properly
+    # third step is to make sure that the df is the excel formulas work properly
     
-    #in python you can ort columes and the process si similar, however it is 
+    # in python you can ort columes and the process si similar, however it is 
     # not needed for combining the dataset like we do in excel
     
-    #will provide the code here as its helpful
+    # will provide the code here as its helpful
     
     # i comment out the line here so it does not actually overwrite anything,
     # however it allows me to show you the syntax 
     # commenting code like this is nice as you develop code and are trying to do
     # stuff with and without certain steps
     
-    # return_status_df = return_status_df.sort_values(by='Order ID'. ascending=True)
     
 
     #---- Step 4
@@ -176,7 +180,6 @@ if __name__ == "__main__":
     
     #now we want to "merge" this data with the return status
     
-    orders_dataset= pd.merge(orders_dataset_managers, return_status_df, on=['Order ID'], how='left')
     
     
     # the rows that were not returned appears as NAN values from teh merge
@@ -258,12 +261,14 @@ if __name__ == "__main__":
     
     #we do this by creating a place holder for the column name with a variable
     
-    for column in order_completeion_region_pivot.columns:
-        print(column)
-        order_completeion_region_pivot[column] = (order_completeion_region_pivot[column]/np.timedelta64(1,'D')).astype(float)
+    for columns in order_completeion_region_pivot.columns:
+        print(columns)
+        order_completeion_region_pivot[columns] = (order_completeion_region_pivot[columns]/np.timedelta64(1,'D')).astype(float)
         
     #this looks great but lets just round the demicals out to make it nicer
     order_completeion_region_pivot = order_completeion_region_pivot.round(2)
+    
+    
     
     
     
@@ -345,7 +350,8 @@ if __name__ == "__main__":
     # remaing part of excel reporting the line chart
     
     #chart is only looing at 2017 data, lets filter the data out first
-    orders_dataset_2017 = orders_dataset[orders_dataset['Order Date']>=pd.to_datetime('1/1/2017')]
+    condition= orders_dataset['Order Date']>=pd.to_datetime('1/1/2017')
+    orders_dataset_2017 = orders_dataset[condition]
 
     #when looking at the pivot chart fields in excel, we see that in axis categories
     # order data is aggregated at the month level
